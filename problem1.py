@@ -1,6 +1,7 @@
 # Problem 1
 
 import statistics
+from typing import final
 
 dice = {
     'Boo' : (0, 0, 5, 5, 7, 7),
@@ -82,9 +83,46 @@ def mean_stddev_sorted(dict):
 
         mario_dict[i] = mean_std
 
+    final_dict = {}
+    mario_sorted = sorted(mario_dict.values(), reverse=True)
+    final_dict = mario_sorted
+    #does this work???
+    #this is just sorting by the first number (which is the mean)
+    #should i use the logic from the function without the imported library or with it?
+    #need to make this a dict, keys have been lost
 
-    return(mario_dict)
+    return(final_dict)
+
+
+#part d
+def mean_stddev_filtered(dict):
+    #using logic from part a
+
+    mario_dict = {}
+
+    for i in dict:
+        mean_std = []
+        
+        mean_std.append(statistics.mean(dict[i]))
+        mean_std.append(statistics.stdev(dict[i]))
+
+        mario_dict[i] = mean_std
+
+    #final_dict = dict[filter(lambda x: x[0] >= 3.5, mario_dict.items())]
+    #dict object is not callable, use brakcets???
+
+    #using dict comprehension
+    final_dict = {key: value for (key, value) in mario_dict.items() if value[0] >= 3.5}
+    #final_dict = sorted(final_dict.values(), reverse=True)
+    #considering this is filtered on the mean
+    #I would choose play as Bowser
+
+
+    return(final_dict)
+
 
 
 #print(mean_stddev_stdlib(dice))
-print(mean_stddev_no_stdlib(dice))
+#print(mean_stddev_no_stdlib(dice))
+print(mean_stddev_sorted(dice))
+#print(mean_stddev_filtered(dice))

@@ -1,9 +1,16 @@
 import unittest
 import math
 from itertools import zip_longest
-from problem1 import mean_stddev_stdlib, mean_stddev_nostdlib, mean_stddev_sorted, \
-    mean_stddev_filtered
-from problem2 import fill_completions, find_completions
+
+try:
+    from problem1 import *
+except ImportError:
+    pass
+
+try:
+    from problem2 import *
+except ImportError:
+    pass
 
 try:
     from gradescope_utils.autograder_utils.decorators import number, weight
@@ -121,7 +128,7 @@ class TestProblem1(unittest.TestCase):
                     'Wario': [4, 2.8284271247461903],
                     'Yoshi': [3.1666666666666665, 2.3392781412697]}
 
-        actual = mean_stddev_nostdlib(self.dice)
+        actual = mean_stddev_no_stdlib(self.dice)
 
         failures = []
         for player in expected:
@@ -182,15 +189,15 @@ class TestProblem1(unittest.TestCase):
     @weight(4)
     def test_1_4(self):
         """ Test mean_stddev_filtered """
-        expected = [['Boo', [4, 2.943920288775949]],
-                    ['Bowser', [4.666666666666667, 4.384315479321969]],
-                    ['DiddyKong', [3.5, 3.5]],
-                    ['DryBones', [3.5, 2.5]],
-                    ['Luigi', [3.5, 2.565800719723442]],
-                    ['Mario', [3.5, 1.6072751268321592]],
+        expected = [['Mario', [3.5, 1.6072751268321592]],
                     ['Standard', [3.5, 1.707825127659933]],
                     ['Waluigi', [3.5, 2.4324199198877374]],
-                    ['Wario', [4, 2.8284271247461903]]]
+                    ['DryBones', [3.5, 2.5]],
+                    ['Luigi', [3.5, 2.565800719723442]],
+                    ['DiddyKong', [3.5, 3.5]],
+                    ['Wario', [4, 2.8284271247461903]],
+                    ['Boo', [4, 2.943920288775949]],
+                    ['Bowser', [4.666666666666667, 4.384315479321969]]]
 
         actual = mean_stddev_filtered(self.dice)
 

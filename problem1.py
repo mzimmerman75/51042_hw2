@@ -29,6 +29,9 @@ dice = {
 
 #part a
 def mean_stddev_stdlib(dict):
+    #the purpose of this function is to display a new dict with the same keys, but with the mean and standard deviation as the values
+    #the paramters is the above dict which has a tuple of ints for its values
+    #the return value is a new dict with the mean and standard deviation of each of the old tuples of ints
 
     mario_dict = {}
 
@@ -45,6 +48,9 @@ def mean_stddev_stdlib(dict):
 
 #part b
 def mean_stddev_no_stdlib(dict):
+    #the purpose of this function is the same as part a but this time by manually programming the mean and standard deviation
+    #the parameters is again the same dict placed above all of these functions
+    #the return value is expected to be the same as part a aside from any rounding/calculating differences
 
     mario_dict = {}
 
@@ -67,6 +73,9 @@ def mean_stddev_no_stdlib(dict):
 
 #part c
 def mean_stddev_sorted(dict):
+    #the purpose of this function is the same as part a & b, but this time it is being sorted by one of its values - the mean
+    #the parameters is again the same dict placed above all of these functions
+    #the return value is the same dict as part a & b but now it is sorted by mean - ultimately this might help someone make a character choice in this game
 
     mario_dict = {}
 
@@ -96,6 +105,11 @@ def mean_stddev_sorted(dict):
 
 #part d
 def mean_stddev_filtered(dict):
+    #the purpose of this function is to cut off the returned values with just those that have a mean >= 3.5, ultimately helping someone choose the most strategic character to play as
+    #the parameters is again the same dict placed above all of these functions
+    #the return value is all of the character with a mean of their dice rolls >= 3.5
+
+
     #using logic from part a
 
     mario_dict = {}

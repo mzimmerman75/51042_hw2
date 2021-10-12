@@ -1,7 +1,6 @@
 # Problem 1
 
 import statistics
-from typing import final
 
 dice = {
     'Boo' : (0, 0, 5, 5, 7, 7),

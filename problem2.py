@@ -21,7 +21,8 @@ def fill_completions(filename):
                 else:
                     final_dict[(k, v)] = set([word.lower()])
          
-    return(final_dict)
+    #return(final_dict)
+    return(words_dirty)
 
 
 def find_completions(prefix, c_dict):
@@ -37,11 +38,11 @@ def find_completions(prefix, c_dict):
         else:
             final_set = final_set.intersection(c_dict.get((k, v), set()))
 
-    return(sorted(final_set))
+    return(final_set)
     
 
-#print(fill_completions("articles.txt"))
-print(find_completions("candidate", fill_completions("articles.txt")))
+print(fill_completions("articles.txt"))
+#print(find_completions("candidate", fill_completions("articles.txt")))
 
 # def main():
 #     #the purpose of this function is to add user input and call upon the other two above functions

@@ -39,7 +39,7 @@ def mean_stddev_stdlib(dict):
         mean_std = []
         
         mean_std.append(statistics.mean(dict[i]))
-        mean_std.append(statistics.stdev(dict[i]))
+        mean_std.append(statistics.pstdev(dict[i]))
 
         mario_dict[i] = mean_std
 
@@ -84,7 +84,7 @@ def mean_stddev_sorted(dict):
         mean_std = []
         
         mean_std.append(statistics.mean(dict[i]))
-        mean_std.append(statistics.stdev(dict[i]))
+        mean_std.append(statistics.pstdev(dict[i]))
 
         mario_dict[i] = mean_std
 
@@ -123,20 +123,20 @@ def mean_stddev_filtered(dict):
 
         mario_dict[i] = mean_std
 
-    #final_dict = dict[filter(lambda x: x[0] >= 3.5, mario_dict.items())]
-
-    #using dict comprehension
     final_dict = {key: value for (key, value) in mario_dict.items() if value[0] >= 3.5}
-    #final_dict = sorted(final_dict.values(), reverse=True)
+
+    output = sorted(final_dict.items(), key=lambda x: (x[1][0], x[1][1]))
+    output_dict = {k:v for (k, v) in output}
+    
     
     #considering this is filtered on the mean
     #I would choose play as Bowser - he has the highest expected value
 
-    return(final_dict)
+    return(output_dict)
 
 
 
 #print(mean_stddev_stdlib(dice))
 #print(mean_stddev_no_stdlib(dice))
-print(mean_stddev_sorted(dice))
-#print(mean_stddev_filtered(dice))
+#print(mean_stddev_sorted(dice))
+print(mean_stddev_filtered(dice))

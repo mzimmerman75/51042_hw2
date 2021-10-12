@@ -77,41 +77,7 @@ def mean_stddev_sorted(dict):
     #the parameters is again the same dict placed above all of these functions
     #the return value is the same dict as part a & b but now it is sorted by mean - ultimately this might help someone make a character choice in this game
 
-    mario_dict = {}
-
-    for i in dict:
-        mean_std = []
-
-        n_len = len(dict[i])
-        n_sum = sum(dict[i])
-        mean = n_sum / n_len
-        mean_std.append(mean)
-
-        std = (sum([((x - mean) ** 2) for x in dict[i]]) / n_len) ** 0.5
-        mean_std.append(std)
-
-        mario_dict[i] = mean_std
-
-    final_dict = {}
-    mario_sorted = sorted(mario_dict.values(), reverse=True)
-    final_dict = mario_sorted
-    #does this work???
-    #this is just sorting by the first number (which is the mean)
-    #should i use the logic from the function without the imported library or with it?
-    #need to make this a dict, keys have been lost
-
-    return(final_dict)
-
-
-#part d
-def mean_stddev_filtered(dict):
-    #the purpose of this function is to cut off the returned values with just those that have a mean >= 3.5, ultimately helping someone choose the most strategic character to play as
-    #the parameters is again the same dict placed above all of these functions
-    #the return value is all of the character with a mean of their dice rolls >= 3.5
-
-
     #using logic from part a
-
     mario_dict = {}
 
     for i in dict:
@@ -122,15 +88,49 @@ def mean_stddev_filtered(dict):
 
         mario_dict[i] = mean_std
 
+    # final_dict = {}
+    # mario_sorted = sorted(mario_dict.values(), reverse=True)
+
+    # for i in mario_dict:
+    #     final_dict[i] = mario_sorted
+
+    output = sorted(mario_dict.items(), key=lambda x: (x[1][0], x[1][1]))
+    output_dict = {k:v for (k, v) in output}
+    # output_dict = {}
+
+    # for (k, v) in output:
+    #     output_dict[k] = v
+
+    return(output)
+
+
+#part d
+def mean_stddev_filtered(dict):
+    #the purpose of this function is to cut off the returned values with just those that have a mean >= 3.5, ultimately helping someone choose the most strategic character to play as
+    #the parameters is again the same dict placed above all of these functions
+    #the return value is all of the character with a mean of their dice rolls >= 3.5
+
+
+    #using logic from part a
+    mario_dict = {}
+    final_dict = {}
+
+    for i in dict:
+        mean_std = []
+        
+        mean_std.append(statistics.mean(dict[i]))
+        mean_std.append(statistics.stdev(dict[i]))
+
+        mario_dict[i] = mean_std
+
     #final_dict = dict[filter(lambda x: x[0] >= 3.5, mario_dict.items())]
-    #dict object is not callable, use brakcets???
 
     #using dict comprehension
     final_dict = {key: value for (key, value) in mario_dict.items() if value[0] >= 3.5}
     #final_dict = sorted(final_dict.values(), reverse=True)
+    
     #considering this is filtered on the mean
-    #I would choose play as Bowser
-
+    #I would choose play as Bowser - he has the highest expected value
 
     return(final_dict)
 

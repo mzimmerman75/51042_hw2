@@ -22,7 +22,7 @@ def fill_completions(filename):
                     final_dict[(k, v)] = set([word.lower()])
          
     #return(final_dict)
-    return(words_dirty)
+    return(final_dict)
 
 
 def find_completions(prefix, c_dict):
@@ -41,30 +41,30 @@ def find_completions(prefix, c_dict):
     return(final_set)
     
 
-print(fill_completions("articles.txt"))
+#print(fill_completions("articles.txt"))
 #print(find_completions("candidate", fill_completions("articles.txt")))
 
-# def main():
-#     #the purpose of this function is to add user input and call upon the other two above functions
-#     #there are no direct paramters but inside this function the other two are being called upon
-#     #the return value is the user input terminal prompt and subsequently a match from the dict if it exists, it keeps repeating until "quit" is entered
+def main():
+    #the purpose of this function is to add user input and call upon the other two above functions
+    #there are no direct paramters but inside this function the other two are being called upon
+    #the return value is the user input terminal prompt and subsequently a match from the dict if it exists, it keeps repeating until "quit" is entered
 
-#     while(True):
-#         user_input = input("Please enter a prefix for iChat to complete:\n")
+    while(True):
+        user_input = input("Please enter a prefix for iChat to complete:\n")
 
-#         if (user_input.lower() == "quit"):
-#             break
+        if (user_input.lower() == "quit"):
+            break
 
-#         #print(fill_completions("articles.txt"))
-#         #print(find_completions(user_input, fill_completions("articles.txt")))
+        #print(fill_completions("articles.txt"))
+        #print(find_completions(user_input, fill_completions("articles.txt")))
 
-#         output = find_completions(user_input, fill_completions("articles.txt"))
-#         for element in output:
-#             print(element)
-#         else:
-#             print("No completions")
+        output = find_completions(user_input, fill_completions("articles.txt"))
+        for element in output:
+            print(element)
+        else:
+            print("No completions")
 
-#     print("Goodbye")
+    print("Goodbye")
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
